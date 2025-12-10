@@ -44,19 +44,23 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.3"
     }
+
+    // *** IMPORTANTE PARA TESTS CON COROUTINES ***
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+    }
 }
 
 dependencies {
 
-    // --- ANDROIDX ---
+    // ===== ANDROIDX =====
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
 
     implementation("androidx.compose.material:material-icons-extended:1.6.0")
 
-
-    // --- COMPOSE + BOM ---
+    // ===== COMPOSE =====
     implementation(platform(libs.compose.bom))
     implementation(libs.compose.ui)
     implementation(libs.compose.ui.graphics)
@@ -64,39 +68,64 @@ dependencies {
     implementation(libs.compose.foundation)
     implementation(libs.compose.material3)
 
-    // --- NAVEGACIÓN ---
-    implementation(libs.navigation.compose)
-
-    // --- VIEWMODEL ---
+    // ===== VIEWMODEL =====
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
 
-    // --- RETROFIT ---
+    // ===== NAVEGACIÓN =====
+    implementation(libs.navigation.compose)
+
+    // ===== RETROFIT =====
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
 
-    // --- OKHTTP LOGGING ---
+    // ===== OKHTTP LOGGING =====
     implementation(libs.okhttp.logging)
 
-    // --- CORRUTINAS ---
+    // ===== CORRUTINAS =====
     implementation(libs.coroutines.android)
 
-    // --- COIL ---
+    // ===== COIL =====
     implementation(libs.coil.compose)
 
-    // --- TEST UNITARIOS ---
+    // ======================================================
+    // 🧪 TEST UNITARIOS (100% CONFIGURADOS)
+    // ======================================================
+
+    // JUnit 4
     testImplementation(libs.junit4)
-    testImplementation(libs.mockito.core)
-    testImplementation(libs.mockito.kotlin)
-    testImplementation(libs.mockito.inline)
+
+    // Mockito – versiones compatibles con Android
+    testImplementation("org.mockito:mockito-core:4.11.0")
+    testImplementation("org.mockito:mockito-inline:4.11.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:4.1.0")
+
+// JUnit
+    testImplementation("junit:junit:4.13.2")
+
+// Core Testing (ViewModel)
+    testImplementation("androidx.arch.core:core-testing:2.2.0")
+
+
+    // Coroutines Test (muy importante)
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+
+    // LiveData + ViewModel Testing
     testImplementation(libs.core.testing)
 
-    // --- TESTS INSTRUMENTADOS ---
+    // Android Framework Mocks
+    testImplementation("org.robolectric:robolectric:4.12.2") // ← Opcional pero recomendado
+
+    // ======================================================
+    // 🧪 TESTS INSTRUMENTADOS (AndroidTest)
+    // ======================================================
     androidTestImplementation(libs.androidx.test.junit)
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation(libs.compose.ui.junit4)
 
+    // Herramientas Debug
     debugImplementation(libs.compose.ui.tooling)
     debugImplementation(libs.compose.ui.test.manifest)
+    testImplementation(kotlin("test"))
 }

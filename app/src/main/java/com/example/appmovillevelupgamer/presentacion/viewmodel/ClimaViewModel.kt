@@ -4,11 +4,12 @@ import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.appmovillevelupgamer.datos.repositorio.ClimaRepositorio
+import com.example.appmovillevelupgamer.datos.repositorio.ClimaRepositorioImpl
 import com.example.appmovillevelupgamer.dominio.modelo.ClimaActual
 import kotlinx.coroutines.launch
 
 class ClimaViewModel(
-    private val repo: ClimaRepositorio = ClimaRepositorio()
+    private val repo: ClimaRepositorio = ClimaRepositorioImpl()
 ) : ViewModel() {
 
     var clima by mutableStateOf<ClimaActual?>(null)

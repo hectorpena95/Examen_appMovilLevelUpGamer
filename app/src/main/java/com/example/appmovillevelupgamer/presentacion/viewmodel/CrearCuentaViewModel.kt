@@ -28,7 +28,8 @@ class CrearCuentaViewModel : ViewModel() {
             return
         }
 
-        if (!android.util.Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
+        // REEMPLAZADO → funciona en Android Y en tests
+        if (!esCorreoValido(correo)) {
             errorMensaje = "El correo no es válido"
             return
         }
@@ -39,12 +40,12 @@ class CrearCuentaViewModel : ViewModel() {
             return
         }
 
-        // Si quieres obligar foto:
-        // if (fotoUri == null) {
-        //     errorMensaje = "Debes subir una foto"
-        //     return
-        // }
-
         cuentaCreada = true
+    }
+
+    // ✔ Regex universal (NO depende de Android Framework)
+    private fun esCorreoValido(email: String): Boolean {
+        val regex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$".toRegex()
+        return regex.matches(email)
     }
 }
