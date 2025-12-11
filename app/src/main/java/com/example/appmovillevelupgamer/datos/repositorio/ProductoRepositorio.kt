@@ -5,7 +5,7 @@ import com.example.appmovillevelupgamer.dominio.modelo.Producto
 
 class ProductoRepositorio {
 
-    suspend fun obtenerProductos() : List<Producto> {
+    suspend fun obtenerProductos(): List<Producto> {
         return ClienteRetrofit.api.obtenerProductos()
     }
 

@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
 
-    <!-- ⭐ PERMITIR HTTP PARA EL EMULADOR -->
+    <!-- ⭐ Emulador -->
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="false">10.0.2.2</domain>
     </domain-config>
 
-    <!-- ⭐ PERMITIR HTTP PARA LA IP DEL INSTITUTO -->
+    <!-- ⭐ Instituto -->
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="false">10.31.83.231</domain>
+    </domain-config>
+
+    <!-- ⭐ CASA: PERMITE HTTP A 192.168.1.x -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">192.168.1.87</domain>
+        <domain includeSubdomains="true">192.168.1.0</domain> <!-- adicional -->
     </domain-config>
 
 </network-security-config>

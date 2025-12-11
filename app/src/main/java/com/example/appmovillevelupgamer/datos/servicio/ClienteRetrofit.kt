@@ -15,7 +15,7 @@ object ClienteRetrofit {
 
     val api: ApiServicio by lazy {
         Retrofit.Builder()
-            .baseUrl(BaseUrlProvider.getBaseUrl())   // 👈 AHORA ES INTELIGENTE
+            .baseUrl(BaseUrlProvider.getBaseUrl())
             .client(cliente)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
