@@ -13,7 +13,7 @@
 
     <!-- ⭐ CASA: PERMITE HTTP A 192.168.1.x -->
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">192.168.1.87</domain>
+        <domain includeSubdomains="true">192.168.1.86</domain>
         <domain includeSubdomains="true">192.168.1.0</domain> <!-- adicional -->
     </domain-config>
 

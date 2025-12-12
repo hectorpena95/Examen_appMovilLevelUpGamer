@@ -7,7 +7,7 @@ import java.net.Inet4Address
 object BaseUrlProvider {
 
     private const val IP_INSTITUTO = "10.31.83.231"
-    private const val IP_CASA = "192.168.1.87"
+    private const val IP_CASA = "192.168.1.86"
     private const val PUERTO = "8080"
 
     fun getBaseUrl(): String {
